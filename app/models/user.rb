@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   has_many      :received,
                 :class_name => "Message",
                 :foreign_key  => "received_id"
+
+  def feed
+    Message.where("user_id = ?", id)
+  end
 end

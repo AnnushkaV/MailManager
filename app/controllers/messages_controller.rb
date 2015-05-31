@@ -1,11 +1,13 @@
-class MessageController < ApplicationController
+class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @message = Message.all
   end
 
   def show
+    @message = Message.find(params[:id])
   end
 
 
@@ -18,14 +20,13 @@ class MessageController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
-
-    respond_to do |format|
-      if @message.save
-         redirect_to @message, notice: 'Message was successfully created.'
-      else
-         render :new
-      end
+    @message = current_user.messages.build(message_params)
+    if @message.save
+      flash[:success] = "Message created!"
+      redirect_to root_url
+    else
+      @feed_items = []
+      render 'messages/index'
     end
   end
 
@@ -47,11 +48,11 @@ class MessageController < ApplicationController
   end
 
   private
-  def set_micropost
+  def set_message
     @message = Message.find(params[:id])
   end
 
   def message_params
-    params.require(:message).permit(:content, :user_id)
+    params.require(:messages).permit(:content, :user_id)
   end
 end

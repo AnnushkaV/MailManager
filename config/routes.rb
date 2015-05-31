@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :message
+  resources :messages
   resources :users, only: [:index]
   devise_for :users
 
   get 'users/new'
   get 'users/show'
-  #root  'users#index'
+
   root  'static_pages#home'
 
 

@@ -2,6 +2,14 @@
 
 <h1>Listing Message</h1>
 
+<div class="row">
+  <div class="col-md-4">
+    <button class="btn btn-primary"><%= link_to 'Sent Message', new_message_path %></button>
+    <button class="btn btn-primary"><%= link_to 'Inbox', '#' %></button>
+    <button class="btn btn-primary"><%= link_to 'Outbox', '#' %></button>
+    <button class="btn btn-primary"><%= link_to 'Trash', '#' %></button>
+  </div>
+  <div class="col-md-8">
 <table>
   <thead>
   <tr>
@@ -23,7 +31,6 @@
   <% end %>
   </tbody>
 </table>
+  </div>
+</div>
 
-<br>
-
-<%= link_to 'New Micropost', new_message_path %>

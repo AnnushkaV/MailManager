@@ -14,7 +14,7 @@
   <% @users.each do |user| %>
       <tr>
         <td><%=link_to user.name, 'users#show' %></td>
-        <td><%=link_to 'Send Message' %></td>
+        <td><%=link_to 'Sent Message', new_message_path %></td>
       </tr>
   <% end %>
 </table>
