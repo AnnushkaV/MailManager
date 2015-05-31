@@ -7,8 +7,16 @@
 
 <p>
   <strong>User:</strong>
-  <%= @message.user_id %>
+  <%= @message.sent_id %>
 </p>
-
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', message_path %>
+<div class="span8">
+  <% if @user.messages.any? %>
+      <h3>Messages (<%= @user.messages.count %>)</h3>
+      <ol class="messages">
+        <%= render @message %>
+      </ol>
+      <%= will_paginate @message %>
+  <% end %>
+</div>
+<%= link_to 'Edit', edit_messages_path(@message) %> |
+<%= link_to 'Back', messages_path %>

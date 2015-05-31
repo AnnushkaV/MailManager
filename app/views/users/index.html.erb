@@ -6,6 +6,7 @@
 <table>
   <tr>
     <th>Name</th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +14,8 @@
 
   <% @users.each do |user| %>
       <tr>
-        <td><%=link_to user.name, 'users#show' %></td>
-        <td><%=link_to 'Send Message' %></td>
+        <td><%=link_to user.name, users_show_path %></td>
+        <td><%=link_to 'Send Message', messages_new_path %></td>
       </tr>
   <% end %>
 </table>

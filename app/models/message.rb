@@ -7,6 +7,8 @@ class Message < ActiveRecord::Base
                  :class_name => "User",
                  :foreign_key  => "recipient_id"
 
+  default_scope -> { order('created_at DESC') }
+
   validates :content, presence: true, length: { maximum: 140 }
   validates :sender_id, presence: true
   validates :recipient_id, presence: true

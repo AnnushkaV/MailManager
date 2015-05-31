@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :message
-  resources :users, only: [:index]
+  resources :messages,  only: [:create, :destroy]
+  resources :users
   devise_for :users
 
   get 'users/new'
   get 'users/show'
-  #root  'users#index'
-  root  'static_pages#home'
+  get 'messages/new'
+  get 'messages/index'
+  root  'users#index'
+  #root  'static_pages#home'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
