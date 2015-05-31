@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :messages
   resources :users, only: [:index]
+
   devise_for :users
 
   get 'users/new'

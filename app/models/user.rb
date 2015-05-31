@@ -4,15 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many      :sent,
-                :class_name => "Message",
-                :foreign_key  => "sent_id"
-
-  has_many      :received,
-                :class_name => "Message",
-                :foreign_key  => "received_id"
-
   def feed
     Message.where("user_id = ?", id)
   end
+
 end
