@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :messages
-  resources :users, only: [:index]
 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :sessions,      only: [:new, :create, :destroy]
+  resources :messages
+  resources :relationships, only: [:create, :destroy]
   devise_for :users
 
   get 'users/new'
