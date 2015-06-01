@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :messages
+  resources :messages do
+    get :outbox
+  end
   resources :users, only: [:index]
   devise_for :users
 

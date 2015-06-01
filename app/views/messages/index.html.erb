@@ -6,31 +6,33 @@
   <div class="col-md-4">
     <button class="btn btn-primary"><%= link_to 'Sent Message', new_message_path %></button>
     <button class="btn btn-primary"><%= link_to 'Inbox', '#' %></button>
-    <button class="btn btn-primary"><%= link_to 'Outbox', '#' %></button>
+    <button class="btn btn-primary"><%= link_to 'Outbox', messages_path %></button>
     <button class="btn btn-primary"><%= link_to 'Trash', '#' %></button>
   </div>
-  <div class="col-md-8">
-<table>
-  <thead>
-  <tr>
-    <th>Content</th>
-    <th>User</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+  <div class="col-md-8"
+      <table>
+        <thead>
+        <tr>
+          <th>Content</th>
+          <th>User</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+        <br/>
+        <tbody>
 
-  <tbody>
-  <% @message.each do |message| %>
-      <tr>
-        <td><%= message.content %></td>
-        <td><%= message.user_id %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+        <% @message.each do |message| %>
+
+            <tr>
+              <td><%= message.content %></td>
+              <td><%= message.sender%></td>
+            </tr>
+            <br/>
+        <% end %>
+
+        </tbody>
+      </table>
+
   </div>
 </div>
 

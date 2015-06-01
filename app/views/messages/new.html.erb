@@ -2,13 +2,8 @@
 
 <%= form_tag messages_path, method: :post do %>
  <div class="form-group">
-   <%= label_tag 'messages[subject]', 'Subject' %>
-   <%= text_field_tag 'messages[subject]', nil, class: 'form-control', required: true %>
- </div>
-
- <div class="form-group">
-   <%= label_tag 'messages[body]', 'Message' %>
-   <%= text_area_tag 'messages[body]', nil, cols: 3, class: 'form-control', required: true %>
+   <%= label_tag 'messages[content]', 'Message' %>
+   <%= text_area_tag 'messages[content]', nil, cols: 3, class: 'form-control', required: true %>
  </div>
 
  <div class="form-group">

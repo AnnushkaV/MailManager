@@ -20,13 +20,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.messages.build(message_params)
+    @message = Message.new(message_params)
     if @message.save
-      flash[:success] = "Message created!"
-      redirect_to root_url
+      redirect_to @message
     else
-      @feed_items = []
-      render 'messages/index'
+      render 'new'
     end
   end
 
@@ -53,6 +51,11 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:messages).permit(:content, :user_id)
+    params.require(:messages).permit(:content)
+  end
+
+  def outbox
+    @message = Message.where(user_id == current_user)
+    redirect action: :index
   end
 end
