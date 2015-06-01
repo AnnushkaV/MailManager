@@ -12,4 +12,16 @@
  *
  *= require_tree .
  *= require_self
+ *= custom
  */
+@import 'bootstrap';
+@import 'bootstrap/theme';
+
+.btn {
+    display: block;
+    margin: 10px 0;
+}
+
+.btn a{
+    color:#fff;
+}
